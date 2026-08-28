@@ -1,1 +1,7 @@
 imagem
+
+Arquivo Descrição
+topologia.png Diagrama da topologia de rede (Kali ↔ Metasploitable)
+medusa-ftp.png Captura de tela do terminal mostrando o ataque de força bruta no FTP
+medusa-dvwa.png Captura de tela do Medusa atacando o formulário web do DVWA
+medusa-smb.png Captura de tela do password spraying no SMB
