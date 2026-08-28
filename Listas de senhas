@@ -1,0 +1,83 @@
+listas de senhas 
+
+
+1. ftp-users.txt
+
+Lista de possíveis usuários para o serviço FTP do Metasploitable 2.
+
+```
+msfadmin
+admin
+root
+user
+test
+guest
+ftp
+anonymous
+```
+
+2. ftp-passwords.txt
+
+Lista de senhas comuns para tentar no FTP.
+
+```
+msfadmin
+password
+123456
+admin
+letmein
+root
+toor
+ftp
+anonymous
+```
+
+3. web-users.txt
+
+Usuários prováveis para o formulário de login do DVWA.
+
+```
+admin
+user
+test
+dvwa
+root
+```
+
+4. web-passwords.txt
+
+Senhas comuns para o DVWA (a senha padrão do DVWA é password).
+
+```
+password
+123456
+admin
+dvwa
+test
+letmein
+```
+
+5. smb-users.txt
+
+Usuários enumerados ou prováveis no serviço SMB do Metasploitable 2.
+
+```
+msfadmin
+root
+guest
+nobody
+user
+administrator
+```
+
+6. smb-passwords.txt
+
+Senhas comuns para tentar no SMB (password spraying).
+
+```
+123456
+password
+msfadmin
+admin
+letmein
+root
